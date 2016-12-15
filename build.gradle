@@ -1,0 +1,51 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.1.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+jar {
+	baseName = 'twitter'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
+	compile group: 'org.springframework', name: 'spring-core', version: '4.3.3.RELEASE'
+	compile group: 'org.springframework', name: 'spring-web', version: '4.3.3.RELEASE'
+	compile group: 'javax.inject', name: 'javax.inject', version: '1'
+	compile group: 'com.h2database', name: 'h2', version: '1.4.191'
+	compile group: 'org.springframework.security', name: 'spring-security-web', version: '4.2.0.RELEASE'
+	compile group: 'org.springframework.security', name: 'spring-security-config', version: '4.2.0.RELEASE'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.4.1.RELEASE'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '1.4.1.RELEASE'
+	compile group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '1.4.1.RELEASE'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '1.4.1.RELEASE'
+	compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '8.0.36'
+	compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+eclipse {
+	classpath {
+		 containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
+		 containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
+	}
+}
